@@ -154,7 +154,7 @@ ingress:
     - host: chart-example.local
       paths:
           # -- The base path
-        - path: /
+        - path: /node-red/
           # --  Ingress type of path
           pathType: ImplementationSpecific
   # --  Ingress TLS configuration
