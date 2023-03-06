@@ -88,8 +88,7 @@ service:
   # -- Kubernetes service type
   type: ClusterIP
   # -- Kubernetes port where service is exposed
-  port: 80
-  port: 8080
+  port: 1880
 
 #  Enable Service-Monitor for node-red
 metrics:
@@ -142,41 +141,28 @@ persistence:
 initContainers: []
 
 ingress:
-  # -- Enable an ingress resource for the server
-  enabled: false
-  # -- Defines which ingress controller will implement the resource
-  className: ""
-  # -- Additional ingress annotations
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
+  enabled: true
+  # className: ""
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
     # kubernetes.io/tls-acme: "true"
   hosts:
-    #  Ingress accepted hostnames
-    - host: chart-example.local
+    - host: null
       paths:
-          # -- The base path
-        - path: /node-red/
-          # --  Ingress type of path
+        - path: /
           pathType: ImplementationSpecific
-  # --  Ingress TLS configuration
-  tls: []
-    # -- Secret name for the certificate
-    # - secretName: chart-example-tls
-    # -- Hostnames for the Ingress
-    # hosts:
-    #  - chart-example.local
-    # -- Certificate used by the Cert-Manager
-    # certificate:
-    # -- Enable certificate
-    #   enabled: true
-    # -- Name of the certificate default: `$fullname-cert-$index`
-    #   name: ""
-    # -- Reference of ClusterIssuers or Issuer
-    #   issuerRef:
-    # -- Kind of the Issuer
-    #     kind: ClusterIssuer
-    # -- Name of the Issuer
-    #     name: "test"
+          backend:
+             service:
+                name: node-red
+                port:
+                  number: 1880
+  # tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
 
 # -- CPU/Memory resource requests/limits
 resources:
