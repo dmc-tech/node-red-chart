@@ -10,7 +10,7 @@ spec:
   releaseName: node-red
   chart:
     spec:
-      chart: ./node-red/chart
+      chart: ./charts/node-red
   values:
     controller:
       image:
