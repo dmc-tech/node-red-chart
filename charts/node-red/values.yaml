@@ -151,7 +151,7 @@ ingress:
   hosts:
     - host: null
       paths:
-        - path: /
+        - path: /node-red
           pathType: ImplementationSpecific
           backend:
              service:
