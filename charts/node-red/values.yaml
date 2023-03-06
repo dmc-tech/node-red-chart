@@ -93,7 +93,7 @@ service:
 #  Enable Service-Monitor for node-red
 metrics:
   # -- Deploy metrics service
-  enabled: false
+  enabled: true
   path: /metrics
   serviceMonitor:
     # -- Enable a prometheus ServiceMonitor
