@@ -12,6 +12,7 @@ spec:
     spec:
       chart: ./charts/node-red
   values:
+    replicaCount: 2
     controller:
       image:
         repository: docker.io/nodered/node-red:3.0.2
