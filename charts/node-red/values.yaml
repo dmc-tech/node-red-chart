@@ -2,8 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 2
-
 # -- Specifies the strategy used to replace old Pods by new ones, default: `RollingUpdate`
 deploymentStrategy: ""
 image:
